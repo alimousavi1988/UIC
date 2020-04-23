@@ -25,8 +25,10 @@ def data():
 
   ######################################################################
 
-  assert x.shape == (num_samples, size_x)
-  assert y.shape == (num_samples, size_y)
+  if x.shape != (num_samples, size_x):
+    raise ValueError("The Shape of variable X is not correct!") 
+  if y.shape != (num_samples, size_y):
+    raise ValueError("The Shape of variable Y is not correct!") 
   d = np.concatenate((x, y), axis=1)
 
 
@@ -48,7 +50,8 @@ def UIC(D, size_x, size_y, num_points, grid_factor):
     final_uic: the UIC value.
   """
 
-  assert D.shape == (num_points, size_x + size_y)
+  if D.shape != (num_points, size_x + size_y):
+    raise ValueError("The Shape of dataset D is not correct!") 
 
   final_uic = 0.
 
